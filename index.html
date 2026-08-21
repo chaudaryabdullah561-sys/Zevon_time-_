@@ -374,6 +374,101 @@
         </div>
     </div>
 
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="payment-modal">
+        <div class="payment-content">
+            <span class="close-payment">&times;</span>
+            <h2>Choose Payment Method</h2>
+            
+            <div class="payment-summary">
+                <p>Order Total:</p>
+                <div class="total-amount" id="payment-total">$0.00</div>
+            </div>
+
+            <div class="payment-methods">
+                <!-- Stripe Payment Option -->
+                <div class="payment-option" onclick="selectPayment('stripe')">
+                    <input type="radio" name="payment-method" id="stripe-option" value="stripe">
+                    <div class="payment-option-content">
+                        <strong>Credit/Debit Card (Stripe)</strong>
+                        <p>Secure payment with Visa, Mastercard, or American Express</p>
+                    </div>
+                    <div class="payment-option-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                </div>
+
+                <!-- PayPal Payment Option -->
+                <div class="payment-option" onclick="selectPayment('paypal')">
+                    <input type="radio" name="payment-method" id="paypal-option" value="paypal">
+                    <div class="payment-option-content">
+                        <strong>PayPal</strong>
+                        <p>Fast, secure, and convenient PayPal checkout</p>
+                    </div>
+                    <div class="payment-option-icon">
+                        <i class="fab fa-paypal"></i>
+                    </div>
+                </div>
+
+                <!-- Cash on Delivery Option -->
+                <div class="payment-option" onclick="selectPayment('cod')">
+                    <input type="radio" name="payment-method" id="cod-option" value="cod">
+                    <div class="payment-option-content">
+                        <strong>Cash on Delivery (COD)</strong>
+                        <p>Pay with cash when you receive your package</p>
+                    </div>
+                    <div class="payment-option-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <button id="stripe-payment" class="payment-method-btn" style="display: none;">
+                    <i class="fas fa-credit-card"></i> Pay with Stripe
+                </button>
+                <button id="paypal-payment" class="payment-method-btn" style="display: none;">
+                    <i class="fab fa-paypal"></i> Pay with PayPal
+                </button>
+                <button id="cod-payment" class="payment-method-btn" style="display: none;">
+                    <i class="fas fa-money-bill-wave"></i> Confirm COD Order
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        // Handle Payment Method Selection
+        function selectPayment(method) {
+            const stripeBtn = document.getElementById('stripe-payment');
+            const paypalBtn = document.getElementById('paypal-payment');
+            const codBtn = document.getElementById('cod-payment');
+            const totalAmount = document.getElementById('payment-total');
+
+            // Hide all buttons
+            stripeBtn.style.display = 'none';
+            paypalBtn.style.display = 'none';
+            codBtn.style.display = 'none';
+
+            // Show selected button
+            if (method === 'stripe') {
+                document.getElementById('stripe-option').checked = true;
+                stripeBtn.style.display = 'block';
+            } else if (method === 'paypal') {
+                document.getElementById('paypal-option').checked = true;
+                paypalBtn.style.display = 'block';
+            } else if (method === 'cod') {
+                document.getElementById('cod-option').checked = true;
+                codBtn.style.display = 'block';
+            }
+
+            // Update total in payment modal
+            totalAmount.textContent = '$' + calculateCartTotal().toFixed(2);
+        }
+
+        // Make functions available globally
+        window.selectPayment = selectPayment;
+    </script>
 </body>
 </html>
