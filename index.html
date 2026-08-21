@@ -3,78 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zevon Time</title>
+    <title>Zevon Time - Premium Watches</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">Zevon Time</div>
+            <div class="logo">
+                <i class="fas fa-watch"></i> Zevon Time
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#features">Features</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#cart" class="cart-icon"><i class="fas fa-shopping-cart"></i></a></li>
             </ul>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <header id="home" class="hero">
         <div class="hero-content">
-            <h1>Welcome to Zevon Time</h1>
-            <p>Manage your time efficiently and achieve your goals</p>
-            <button class="cta-button">Get Started</button>
+            <h1>Timeless Elegance Redefined</h1>
+            <p>Discover our collection of premium, handcrafted watches</p>
+            <a href="#products" class="cta-button">Shop Now</a>
         </div>
     </header>
 
+    <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2>About Us</h2>
-            <p>Zevon Time is a modern time management application designed to help you stay organized, productive, and focused on what matters most.</p>
-        </div>
-    </section>
-
-    <section id="features" class="features">
-        <div class="container">
-            <h2>Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>⏱️ Time Tracking</h3>
-                    <p>Track your activities and see how you spend your time throughout the day.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Zevon Time</h2>
+                    <p>At Zevon Time, we believe a watch is more than just a timepiece—it's a statement of style, craftsmanship, and precision. Since our founding, we've been dedicated to creating watches that blend Swiss-inspired engineering with contemporary design.</p>
+                    <ul class="about-features">
+                        <li><i class="fas fa-check"></i> Premium materials and craftsmanship</li>
+                        <li><i class="fas fa-check"></i> Precision Swiss-movement mechanics</li>
+                        <li><i class="fas fa-check"></i> Lifetime warranty on all watches</li>
+                        <li><i class="fas fa-check"></i> Sustainable and ethical sourcing</li>
+                    </ul>
                 </div>
-                <div class="feature-card">
-                    <h3>📋 Task Management</h3>
-                    <p>Organize tasks by priority and deadlines to stay on top of your work.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>📊 Analytics</h3>
-                    <p>Get insights into your productivity patterns with detailed reports and charts.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🔔 Notifications</h3>
-                    <p>Receive timely reminders to keep you on schedule and never miss a deadline.</p>
+                <div class="about-image">
+                    <div class="placeholder-image">
+                        <i class="fas fa-watch"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact">
+    <!-- Products Section -->
+    <section id="products" class="products">
         <div class="container">
-            <h2>Get in Touch</h2>
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit" class="submit-button">Send Message</button>
-            </form>
+            <h2>Our Collection</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-watch"></i>
+                        <span class="product-tag">New</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Zevon Classic</h3>
+                        <p class="product-description">Timeless elegance with automatic movement</p>
+                        <div class="product-specs">
+                            <span><i class="fas fa-gem"></i> Stainless Steel</span>
+                            <span><i class="fas fa-water"></i> 50M Water Resistant</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(124 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="price">$299.99</span>
+                            <button class="add-to-cart"><i class="fas fa-shopping-bag"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-watch"></i>
+                        <span class="product-tag featured">Featured</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Zevon Luxe</h3>
+                        <p class="product-description">Premium luxury collection with leather strap</p>
+                        <div class="product-specs">
+                            <span><i class="fas fa-gem"></i> White Gold Plated</span>
+                            <span><i class="fas fa-water"></i> 100M Water Resistant</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(89 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="price">$549.99</span>
+                            <button class="add-to-cart"><i class="fas fa-shopping-bag"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-watch"></i>
+                        <span class="product-tag">Popular</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Zevon Sport</h3>
+                        <p class="product-description">Adventure-ready sports watch</p>
+                        <div class="product-specs">
+                            <span><i class="fas fa-gem"></i> Titanium Case</span>
+                            <span><i class="fas fa-water"></i> 200M Water Resistant</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half"></i>
+                            <span>(156 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="price">$399.99</span>
+                            <button class="add-to-cart"><i class="fas fa-shopping-bag"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-watch"></i>
+                        <span class="product-tag">Elite</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Zevon Elite</h3>
+                        <p class="product-description">Masterpiece with sapphire crystal</p>
+                        <div class="product-specs">
+                            <span><i class="fas fa-gem"></i> Rose Gold Finish</span>
+                            <span><i class="fas fa-water"></i> 300M Water Resistant</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(98 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="price">$799.99</span>
+                            <button class="add-to-cart"><i class="fas fa-shopping-bag"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-watch"></i>
+                        <span class="product-tag">Sale</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Zevon Minimal</h3>
+                        <p class="product-description">Minimalist design for everyday wear</p>
+                        <div class="product-specs">
+                            <span><i class="fas fa-gem"></i> Silver Steel</span>
+                            <span><i class="fas fa-water"></i> 30M Water Resistant</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(67 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="price"><s>$199.99</s> $149.99</span>
+                            <button class="add-to-cart"><i class="fas fa-shopping-bag"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-watch"></i>
+                        <span class="product-tag">New</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Zevon Heritage</h3>
+                        <p class="product-description">Vintage-inspired with modern tech</p>
+                        <div class="product-specs">
+                            <span><i class="fas fa-gem"></i> Leather Strap</span>
+                            <span><i class="fas fa-water"></i> 50M Water Resistant</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(112 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="price">$349.99</span>
+                            <button class="add-to-cart"><i class="fas fa-shopping-bag"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Absolutely love my Zevon watch! The craftsmanship is exceptional and it looks even better in person. Highly recommended!"</p>
+                    <strong>- Sarah M.</strong>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Best purchase I've made in years. The watch keeps perfect time and the customer service is outstanding!"</p>
+                    <strong>- James T.</strong>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Elegant, durable, and stylish. Zevon Time watches are worth every penny. I'm a customer for life!"</p>
+                    <strong>- Maria G.</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-wrapper">
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Subject" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address</strong>
+                            <p>123 Watch Street, Time City, TC 12345</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p>info@zevontime.com</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Zevon Time. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Zevon Time</h4>
+                    <p>Crafting timeless elegance since 2020.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#products">Shop</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Zevon Time. All rights reserved. | Crafted with <i class="fas fa-heart"></i> for watch lovers</p>
+            </div>
         </div>
     </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart" class="cart-modal">
+        <div class="cart-content">
+            <span class="close">&times;</span>
+            <h2>Shopping Cart</h2>
+            <div class="cart-items"></div>
+            <div class="cart-total">
+                <strong>Total: $0.00</strong>
+            </div>
+            <button class="checkout-button">Proceed to Checkout</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
