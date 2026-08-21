@@ -146,6 +146,139 @@ function setupCartModal() {
     });
 }
 
+// Payment Modal Control
+function setupPaymentModal() {
+    const checkoutBtn = document.querySelector('.checkout-button');
+    const paymentModal = document.getElementById('payment-modal');
+    const closePaymentBtn = document.querySelector('.close-payment');
+    
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!');
+                return;
+            }
+            paymentModal.classList.add('active');
+        });
+    }
+    
+    if (closePaymentBtn) {
+        closePaymentBtn.addEventListener('click', () => {
+            paymentModal.classList.remove('active');
+        });
+    }
+    
+    window.addEventListener('click', (e) => {
+        if (e.target === paymentModal) {
+            paymentModal.classList.remove('active');
+        }
+    });
+}
+
+// Handle Payment Methods
+function setupPaymentMethods() {
+    const stripeBtn = document.getElementById('stripe-payment');
+    const paypalBtn = document.getElementById('paypal-payment');
+    const codBtn = document.getElementById('cod-payment');
+    
+    if (stripeBtn) {
+        stripeBtn.addEventListener('click', () => {
+            processStripePayment();
+        });
+    }
+    
+    if (paypalBtn) {
+        paypalBtn.addEventListener('click', () => {
+            processPayPalPayment();
+        });
+    }
+    
+    if (codBtn) {
+        codBtn.addEventListener('click', () => {
+            processCODPayment();
+        });
+    }
+}
+
+// Process Stripe Payment
+function processStripePayment() {
+    showNotification('Redirecting to Stripe...');
+    setTimeout(() => {
+        showNotification('Payment processed successfully!');
+        completeCheckout();
+    }, 2000);
+}
+
+// Process PayPal Payment
+function processPayPalPayment() {
+    showNotification('Redirecting to PayPal...');
+    setTimeout(() => {
+        showNotification('Payment processed successfully!');
+        completeCheckout();
+    }, 2000);
+}
+
+// Process Cash on Delivery
+function processCODPayment() {
+    const paymentModal = document.getElementById('payment-modal');
+    const cartModal = document.getElementById('cart');
+    
+    // Show COD confirmation
+    const confirmCOD = confirm(
+        `Order Summary:\n\n` +
+        `Total Amount: $${calculateCartTotal().toFixed(2)}\n\n` +
+        `Delivery Method: Cash on Delivery (COD)\n\n` +
+        `You will pay the amount when you receive the package.\n\n` +
+        `Confirm COD Order?`
+    );
+    
+    if (confirmCOD) {
+        showNotification('Order confirmed! Your package will be delivered soon.');
+        
+        // Store order details
+        const order = {
+            items: cart,
+            total: calculateCartTotal(),
+            paymentMethod: 'COD',
+            orderDate: new Date().toLocaleString(),
+            orderID: generateOrderID()
+        };
+        
+        // Save to localStorage
+        let orders = JSON.parse(localStorage.getItem('zevonOrders')) || [];
+        orders.push(order);
+        localStorage.setItem('zevonOrders', JSON.stringify(orders));
+        
+        // Close modals
+        paymentModal.classList.remove('active');
+        cartModal.classList.remove('active');
+        
+        completeCheckout();
+    }
+}
+
+// Calculate Cart Total
+function calculateCartTotal() {
+    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+}
+
+// Generate Order ID
+function generateOrderID() {
+    return 'ZEVON-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+}
+
+// Complete Checkout
+function completeCheckout() {
+    cart = [];
+    saveCart();
+    updateCart();
+    
+    // Redirect to home after 2 seconds
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 1000);
+}
+
 // Contact Form Submission
 function setupContactForm() {
     const contactForm = document.querySelector('.contact-form');
@@ -171,26 +304,6 @@ function setupAddToCartButtons() {
             addToCart(productName, price);
         });
     });
-}
-
-// Checkout Button Handler
-function setupCheckoutButton() {
-    const checkoutBtn = document.querySelector('.checkout-button');
-    if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', () => {
-            if (cart.length === 0) {
-                showNotification('Your cart is empty!');
-                return;
-            }
-            showNotification('Proceeding to checkout...');
-            setTimeout(() => {
-                showNotification('Thank you for your order!');
-                cart = [];
-                saveCart();
-                updateCart();
-            }, 1000);
-        });
-    }
 }
 
 // Navbar Active State
@@ -245,9 +358,10 @@ document.addEventListener('DOMContentLoaded', () => {
     loadCart();
     updateCart();
     setupCartModal();
+    setupPaymentModal();
+    setupPaymentMethods();
     setupContactForm();
     setupAddToCartButtons();
-    setupCheckoutButton();
     updateActiveNavLink();
     addActiveNavStyles();
     
