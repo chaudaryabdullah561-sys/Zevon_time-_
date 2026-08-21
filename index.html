@@ -305,7 +305,14 @@
                         <i class="fas fa-phone"></i>
                         <div>
                             <strong>Phone</strong>
-                            <p>+1 (555) 123-4567</p>
+                            <p>+92 321 5810390</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <strong>WhatsApp</strong>
+                            <p><a href="https://wa.me/923215810390" target="_blank" style="color: inherit; text-decoration: none;">+92 321 5810390</a></p>
                         </div>
                     </div>
                     <div class="info-item">
@@ -316,10 +323,10 @@
                         </div>
                     </div>
                     <div class="social-links">
+                        <a href="https://wa.me/923215810390" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
             </div>
@@ -353,11 +360,11 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Legal</h4>
+                    <h4>Connect With Us</h4>
                     <ul>
+                        <li><a href="https://wa.me/923215810390" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp: +92 321 5810390</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -427,9 +434,21 @@
                         <i class="fas fa-money-bill-wave"></i>
                     </div>
                 </div>
+
+                <!-- WhatsApp Order Option -->
+                <div class="payment-option" onclick="selectPayment('whatsapp')">
+                    <input type="radio" name="payment-method" id="whatsapp-option" value="whatsapp">
+                    <div class="payment-option-content">
+                        <strong>Order via WhatsApp</strong>
+                        <p>Chat with us on WhatsApp to place your order</p>
+                    </div>
+                    <div class="payment-option-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                </div>
             </div>
 
-            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
                 <button id="stripe-payment" class="payment-method-btn" style="display: none;">
                     <i class="fas fa-credit-card"></i> Pay with Stripe
                 </button>
@@ -439,8 +458,18 @@
                 <button id="cod-payment" class="payment-method-btn" style="display: none;">
                     <i class="fas fa-money-bill-wave"></i> Confirm COD Order
                 </button>
+                <button id="whatsapp-payment" class="payment-method-btn" style="display: none;" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </button>
             </div>
         </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/923215810390" target="_blank" title="Chat with us on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
     </div>
 
     <script src="script.js"></script>
@@ -450,12 +479,14 @@
             const stripeBtn = document.getElementById('stripe-payment');
             const paypalBtn = document.getElementById('paypal-payment');
             const codBtn = document.getElementById('cod-payment');
+            const whatsappBtn = document.getElementById('whatsapp-payment');
             const totalAmount = document.getElementById('payment-total');
 
             // Hide all buttons
             stripeBtn.style.display = 'none';
             paypalBtn.style.display = 'none';
             codBtn.style.display = 'none';
+            whatsappBtn.style.display = 'none';
 
             // Show selected button
             if (method === 'stripe') {
@@ -467,14 +498,33 @@
             } else if (method === 'cod') {
                 document.getElementById('cod-option').checked = true;
                 codBtn.style.display = 'block';
+            } else if (method === 'whatsapp') {
+                document.getElementById('whatsapp-option').checked = true;
+                whatsappBtn.style.display = 'block';
             }
 
             // Update total in payment modal
             totalAmount.textContent = '$' + calculateCartTotal().toFixed(2);
         }
 
+        // Open WhatsApp with order details
+        function openWhatsApp() {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            let message = '*Zevon Time Watch Order*\n\n';
+            
+            cartItems.forEach(item => {
+                message += `${item.name} - $${item.price} x${item.quantity}\n`;
+            });
+            
+            message += `\n*Total: $${calculateCartTotal().toFixed(2)}*\n\nPlease confirm my order.`;
+            
+            const whatsappUrl = `https://wa.me/923215810390?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
         // Make functions available globally
         window.selectPayment = selectPayment;
+        window.openWhatsApp = openWhatsApp;
     </script>
 </body>
 </html>
